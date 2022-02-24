@@ -1,0 +1,8 @@
+module.exports = [{"id":"china","name":{"TC":"中國","SC":"中国","EN":"China"},"localImageUrl":"china.jpg","unlock":true},{"id":"thailand","name":{"TC":"泰國","SC":"泰国","EN":"Thailand"},"localImageUrl":"thailand.jpg","unlock":true},{"id":"america","name":{"TC":"美國","SC":"美国","EN":"America"},"localImageUrl":"america.jpg","unlock":true},{"id":"germany","name":{"TC":"德國","SC":"德国","EN":"Germany"},"localImageUrl":"germany.jpg","unlock":false},{"id":"england","name":{"TC":"英國","SC":"英国","EN":"England"},"localImageUrl":"england.jpg","unlock":false},{"id":"algeria","name":{"TC":"阿爾及利亞","SC":"阿尔及利亚","EN":"Algeria"},"localImageUrl":"algeria.jpg","unlock":false}]
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/dataJson/countrySelection.json
+// module id = yTY/
+// module chunks = 0

@@ -1,0 +1,16 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies":{
+    "v-calendar":"^1.16.1",
+    "vue-i18n":"^8.15.0 "
+
+  },
+  "author": "",
+  "license": "ISC"
+}
