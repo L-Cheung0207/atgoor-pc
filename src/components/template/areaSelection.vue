@@ -1,36 +1,56 @@
 <template>
   <div>
-    <div :id="'areaSelection_' + this.areaId" class="areaSelectionTemplate touch" v-show="this.selectingCountry == this.countryId" @mouseup="selectArea()">
-      <span :id="'areaSelectionContent_' + this.areaId">
-        <div class="areaSelectionTitle" v-html="this.areaName[this.language]">
-        </div>
+    <div
+      v-show="selectingCountry == countryId"
+      :id="'areaSelection_' + areaId"
+      class="areaSelectionTemplate touch"
+      @mouseup="selectArea()"
+    >
+      <span :id="'areaSelectionContent_' + areaId">
+        <div
+          class="areaSelectionTitle"
+          v-html="areaName[language]"
+        />
       </span>
       <!-- <img class="countrySelectionLockImage" :src="this.countrySelectionLockImage" v-show="!this.countryUnloackDynamic"> -->
 
       <div class="rightArrowArea">
-        <img :src="this.rightArrowImage" class="rightArrowImage"/>
+        <img
+          :src="rightArrowImage"
+          class="rightArrowImage"
+        >
       </div>
-
     </div>
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '@/store'
 
 export default {
-  name: 'areaSelection',
+  name: 'AreaSelection',
   props: ['areaId','countryId','areaName','latitude','longitude','height','cesiumData'],
 
   data () {
     return {
       language : i18n.locale,
-      selectingCountry : "",
+      selectingCountry : '',
 
       rightArrowImage : require('@/assets/images/general/rightArrow.png'),
     }
+  },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+    checkLeftMenuSelectingCountry(){return store.state.leftMenuSelectingCountry},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+    checkLeftMenuSelectingCountry(country){
+      this.selectingCountry = country
+    },
   },
   created(){
     // this.setUpImage();
@@ -72,17 +92,17 @@ export default {
 
     selectArea(){
 
-      if(store.state.leftMenuSelectingArea == ""){
+      if(store.state.leftMenuSelectingArea == ''){
         if(this.latitude != null && this.longitude != null && this.height != null){
-            store.state.leftMenuSelectingArea = this.areaId;
+          store.state.leftMenuSelectingArea = this.areaId
 
-            console.log(store.state.areaDictionary[this.areaId]);
+          console.log(store.state.areaDictionary[this.areaId])
 
-            if(store.state.areaDictionary[this.areaId].cesiumData["baseMap"] != null){
-              store.state.cesiumBaseMapData = store.state.areaDictionary[this.areaId].cesiumData["baseMap"];
-            }
+          if(store.state.areaDictionary[this.areaId].cesiumData['baseMap'] != null){
+            store.state.cesiumBaseMapData = store.state.areaDictionary[this.areaId].cesiumData['baseMap']
+          }
 
-            store.state.isShow3DScene = false;
+          store.state.isShow3DScene = false
         }
         
       }
@@ -91,17 +111,6 @@ export default {
       
     },
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-    checkLeftMenuSelectingCountry(){return store.state.leftMenuSelectingCountry},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
-    checkLeftMenuSelectingCountry(country){
-      this.selectingCountry = country;
-    },
   },
 }
 </script>

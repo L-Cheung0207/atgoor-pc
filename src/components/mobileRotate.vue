@@ -3,9 +3,15 @@
     <div class="mobileRotateArea touch">
       <div class="mobileRotateModalArea">
         <div class="mobileRotateModalImageArea">
-          <img class="mobileRotateModalImage" :src="mobileRotateImage">
+          <img
+            class="mobileRotateModalImage"
+            :src="mobileRotateImage"
+          >
         </div>
-        <div class="mobileRotateModalText" v-html="$t('mobileRotate')"></div>
+        <div
+          class="mobileRotateModalText"
+          v-html="$t('mobileRotate')"
+        />
       </div>
     </div>
   </div>
@@ -13,29 +19,28 @@
 
 <script>
 
-import i18n from '@/language';
-import { store } from '../store'
+import i18n from '@/language'
 
 export default {
-  name: 'mobileRotate',
+  name: 'MobileRotate',
   data () {
     return {
       language : i18n.locale,
       mobileRotateImage : require('../assets/images/mobile/mobileRotate.png'),
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+  },
   created(){
 
   },
   methods:{
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
   },
 }
 </script>

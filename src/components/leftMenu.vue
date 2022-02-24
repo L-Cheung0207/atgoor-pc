@@ -1,30 +1,55 @@
 <template>
   <div>
-
-
     <transition name="fade">
-      <div class="leftMenuContainerArea touch" v-show="this.selectingArea == ''">
+      <div
+        v-show="selectingArea == ''"
+        class="leftMenuContainerArea touch"
+      >
         <!-- 按 tab 分 陸地 和 海洋 -->
         <div class="leftMenuTabArea">
-          <div id="landTabButton" class="leftMenuTab touch leftMenuTabSelecting" @mouseup="selectTab('land')">
-            <div id="landTabTitle" class="tabTitleArea tabTitleAreaSelecting">
+          <div
+            id="landTabButton"
+            class="leftMenuTab touch leftMenuTabSelecting"
+            @mouseup="selectTab('land')"
+          >
+            <div
+              id="landTabTitle"
+              class="tabTitleArea tabTitleAreaSelecting"
+            >
               <div class="tabTitleIconArea">
-                <img class="tabTitleIcon" :src="this.tabIcon['land']">
+                <img
+                  class="tabTitleIcon"
+                  :src="tabIcon['land']"
+                >
               </div>
               <div class="tabTitleTextArea">
-                <div class="tabTitleText" v-html="$t('land')">
-                </div>
+                <div
+                  class="tabTitleText"
+                  v-html="$t('land')"
+                />
               </div>
             </div>
           </div>
-          <div id="oceanTabButton" class="leftMenuTab touch" @mouseup="selectTab('ocean')">
-            <div id="oceanTabTitle" class="tabTitleArea">
+          <div
+            id="oceanTabButton"
+            class="leftMenuTab touch"
+            @mouseup="selectTab('ocean')"
+          >
+            <div
+              id="oceanTabTitle"
+              class="tabTitleArea"
+            >
               <div class="tabTitleIconArea">
-                <img class="tabTitleIcon" :src="this.tabIcon['ocean']">
+                <img
+                  class="tabTitleIcon"
+                  :src="tabIcon['ocean']"
+                >
               </div>
               <div class="tabTitleTextArea">
-                <div class="tabTitleText" v-html="$t('ocean')">
-                </div>
+                <div
+                  class="tabTitleText"
+                  v-html="$t('ocean')"
+                />
               </div>
             </div>
           </div>
@@ -33,43 +58,74 @@
         <div class="tabInstructionArea">
           <!-- 讓 user 選擇國家 -->
           <div class="tabInstruction">
-            <span v-show="this.selectingTab == 'land'" v-html="$t('countryClassified')"></span>
+            <span
+              v-show="selectingTab == 'land'"
+              v-html="$t('countryClassified')"
+            />
           </div>
           <!-- 返回國家分類 -->
-          <div class="backToCountrySelectionArea touch" v-show="this.selectingTab == 'land' && this.selectingCountry != ''" @mouseup="backToCountrySelection()">
-
+          <div
+            v-show="selectingTab == 'land' && selectingCountry != ''"
+            class="backToCountrySelectionArea touch"
+            @mouseup="backToCountrySelection()"
+          >
             <div class="backToCountrySelectionButtonArea">
-              <img class="backToCountrySelectionButton" :src="this.backButtonImage">
+              <img
+                class="backToCountrySelectionButton"
+                :src="backButtonImage"
+              >
             </div>
 
             <div class="backToCountrySelectionTextArea">
-              <div class="backToCountrySelectionText" v-html="$t('backToCountryClassified')">
-              </div>
+              <div
+                class="backToCountrySelectionText"
+                v-html="$t('backToCountryClassified')"
+              />
             </div>
           </div>
         </div>
 
         <!-- 國家選擇  經 json / api 獲取 -->
-        <div id="landTabCountrySelectionArea" class="landTabCountrySelectionArea touch" v-show="this.selectingTab == 'land'">
-  <!--         <countrySelectionTemplate id="hihi"></countrySelectionTemplate> -->
+        <div
+          v-show="selectingTab == 'land'"
+          id="landTabCountrySelectionArea"
+          class="landTabCountrySelectionArea touch"
+        >
+          <!--         <countrySelectionTemplate id="hihi"></countrySelectionTemplate> -->
         </div>
 
         <!-- 選擇了國家  選擇地區    經 json / api 獲取地區 -->
-        <div id="landTabCountrySubSelectionArea" class="landTabCountrySubSelectionArea touch" v-show="this.selectingTab == 'land' && this.selectingCountry != ''">
+        <div
+          v-show="selectingTab == 'land' && selectingCountry != ''"
+          id="landTabCountrySubSelectionArea"
+          class="landTabCountrySubSelectionArea touch"
+        >
           <div class="landTabCountrySubSelectionSelectingCountryArea">
             <div class="landTabCountrySubSelectionSelectingCountryImageArea">
-              <img class="landTabCountrySubSelectionSelectingCountryImage" v-if="this.selectingCountryImage != ''" :src="this.selectingCountryImage">
-              <div class="landTabCountrySubSelectionSelectingCountryText" v-if="this.selectingCountryName != ''" v-html="this.selectingCountryName[this.language]">
-              </div>
+              <img
+                v-if="selectingCountryImage != ''"
+                class="landTabCountrySubSelectionSelectingCountryImage"
+                :src="selectingCountryImage"
+              >
+              <div
+                v-if="selectingCountryName != ''"
+                class="landTabCountrySubSelectionSelectingCountryText"
+                v-html="selectingCountryName[language]"
+              />
             </div>
           </div>
 
           <div class="landTabSubSelectionTitleArea">
-            <div class="landTabSubSelectionTitle" v-html="$t('selectArea')">
-            </div>
+            <div
+              class="landTabSubSelectionTitle"
+              v-html="$t('selectArea')"
+            />
           </div>
 
-          <div id="landTabSubSelectionArea" class="landTabSubSelectionArea">
+          <div
+            id="landTabSubSelectionArea"
+            class="landTabSubSelectionArea"
+          >
             <!-- <areaSelectionTemplate areaId="lala"></areaSelectionTemplate> -->
           </div>
         </div>
@@ -78,83 +134,153 @@
 
 
     <transition name="fade">
-      <div class="leftMenuDetailContainerArea touch" v-show="this.selectingArea != ''">
+      <div
+        v-show="selectingArea != ''"
+        class="leftMenuDetailContainerArea touch"
+      >
         <div class="displaySelectedAreaArea">
-          <div class="displaySelectedAreaText" v-html="this.selectingAreaName[this.language]">
-          </div>
+          <div
+            class="displaySelectedAreaText"
+            v-html="selectingAreaName[language]"
+          />
           
-          <div class="displaySelectedAreaBackButtonArea touch" @mouseup="backToAreaSelection()">
-            <img class="displaySelectedAreaBackButton" :src="this.backButtonImage">
+          <div
+            class="displaySelectedAreaBackButtonArea touch"
+            @mouseup="backToAreaSelection()"
+          >
+            <img
+              class="displaySelectedAreaBackButton"
+              :src="backButtonImage"
+            >
           </div>
         </div>
 
-        <div class="breakline"></div>
+        <div class="breakline" />
 
         <div class="landSetectionArea">
           <div class="landSetectionSubArea">
             <div class="landSetection">
-              <div class="landSelectionImageArea touch" @mouseup="selectLand('cityLand')">
-                <img class="landSelectionImage" :src="this.landImage['cityLand']"/>
+              <div
+                class="landSelectionImageArea touch"
+                @mouseup="selectLand('cityLand')"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['cityLand']"
+                >
               </div>
-              <div class="landSelectionImageArea touch" v-show="this.selectingLand== 'cityLand'" @mouseup="unselectLand()">
-                <img class="landSelectionImage" :src="this.landImage['cityLandSelected']"/>
+              <div
+                v-show="selectingLand== 'cityLand'"
+                class="landSelectionImageArea touch"
+                @mouseup="unselectLand()"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['cityLandSelected']"
+                >
               </div>
               <div class="landSelectionTextArea">
-                <div class="landSelectionText" v-html="$t('cityLand')"></div>
+                <div
+                  class="landSelectionText"
+                  v-html="$t('cityLand')"
+                />
               </div>
             </div>
             <div class="landSetection">
-              <div class="landSelectionImageArea touch" @mouseup="selectLand('agriculturalLand')">
-                <img class="landSelectionImage" :src="this.landImage['agriculturalLand']"/>
+              <div
+                class="landSelectionImageArea touch"
+                @mouseup="selectLand('agriculturalLand')"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['agriculturalLand']"
+                >
               </div>
-              <div class="landSelectionImageArea touch" v-show="this.selectingLand== 'agriculturalLand'" @mouseup="unselectLand()">
-                <img class="landSelectionImage" :src="this.landImage['agriculturalLandSelected']"/>
+              <div
+                v-show="selectingLand== 'agriculturalLand'"
+                class="landSelectionImageArea touch"
+                @mouseup="unselectLand()"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['agriculturalLandSelected']"
+                >
               </div>
               <div class="landSelectionTextArea">
-                <div class="landSelectionText" v-html="$t('agriculturalLand')"></div>
+                <div
+                  class="landSelectionText"
+                  v-html="$t('agriculturalLand')"
+                />
               </div>
             </div>
             <div class="landSetection">
-              <div class="landSelectionImageArea touch" @mouseup="selectLand('forestRights')">
-                <img class="landSelectionImage" :src="this.landImage['forestRights']"/>
+              <div
+                class="landSelectionImageArea touch"
+                @mouseup="selectLand('forestRights')"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['forestRights']"
+                >
               </div>
-              <div class="landSelectionImageArea touch" v-show="this.selectingLand== 'forestRights'" @mouseup="unselectLand()">
-                <img class="landSelectionImage" :src="this.landImage['forestRightsSelected']"/>
+              <div
+                v-show="selectingLand== 'forestRights'"
+                class="landSelectionImageArea touch"
+                @mouseup="unselectLand()"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['forestRightsSelected']"
+                >
               </div>
               <div class="landSelectionTextArea">
-                <div class="landSelectionText" v-html="$t('forestRights')"></div>
+                <div
+                  class="landSelectionText"
+                  v-html="$t('forestRights')"
+                />
               </div>
             </div>
             <div class="landSetection">
-              <div class="landSelectionImageArea touch" @mouseup="selectLand('freshWater')">
-                <img class="landSelectionImage" :src="this.landImage['freshWater']"/>
+              <div
+                class="landSelectionImageArea touch"
+                @mouseup="selectLand('freshWater')"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['freshWater']"
+                >
               </div>
-              <div class="landSelectionImageArea touch" v-show="this.selectingLand== 'freshWater'" @mouseup="unselectLand()">
-                <img class="landSelectionImage" :src="this.landImage['freshWaterSelected']"/>
+              <div
+                v-show="selectingLand== 'freshWater'"
+                class="landSelectionImageArea touch"
+                @mouseup="unselectLand()"
+              >
+                <img
+                  class="landSelectionImage"
+                  :src="landImage['freshWaterSelected']"
+                >
               </div>
               <div class="landSelectionTextArea">
-                <div class="landSelectionText" v-html="$t('freshWater')"></div>
+                <div
+                  class="landSelectionText"
+                  v-html="$t('freshWater')"
+                />
               </div>
             </div>
-            
           </div>
         </div>
 
-        <div class="breakline"></div>
+        <div class="breakline" />
 
-        <cityLandSelection v-show="this.selectingLand == 'cityLand'"></cityLandSelection>
-
+        <cityLandSelection v-show="selectingLand == 'cityLand'" />
       </div>
     </transition>
-
-    
-   
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '@/store'
 import Vue from 'vue'
 import countrySelectionTemplate from '@/components/template/countrySelection'
@@ -171,10 +297,10 @@ import countrySelectionJson from '@/dataJson/countrySelection.json'
 import areaSelectionJson from '@/dataJson/areaSelection.json'
 
 export default {
-  name: 'leftMenu',
+  name: 'LeftMenu',
   components: {
-    countrySelectionTemplate,
-    areaSelectionTemplate,
+    // countrySelectionTemplate,
+    // areaSelectionTemplate,
     cityLandSelection,
   },
   data () {
@@ -184,28 +310,28 @@ export default {
       areaSelectionJsonData : areaSelectionJson,
 
 
-      selectingTab : "land",
-      selectingCountry : "",
-      selectingCountryName : "",
-      selectingCountryImage : "",
+      selectingTab : 'land',
+      selectingCountry : '',
+      selectingCountryName : '',
+      selectingCountryImage : '',
 
-      selectingArea : "",
-      selectingAreaName : "",
-
-
-      selectingLand : "",
+      selectingArea : '',
+      selectingAreaName : '',
 
 
+      selectingLand : '',
 
 
-      tabArray : ["land","ocean"],
+
+
+      tabArray : ['land','ocean'],
       tabButtonId : {
-        "land" : "landTabButton",
-        "ocean" : "oceanTabButton",
+        'land' : 'landTabButton',
+        'ocean' : 'oceanTabButton',
       },
       tabTitleId : {
-        "land" : "landTabTitle",
-        "ocean" : "oceanTabTitle",
+        'land' : 'landTabTitle',
+        'ocean' : 'oceanTabTitle',
       },
 
 
@@ -213,8 +339,8 @@ export default {
 
       //Image
       tabIcon : {
-        "land" : require('../assets/images/leftMenu/landIcon.png'),
-        "ocean" : require('../assets/images/leftMenu/oceanIcon.png'),
+        'land' : require('../assets/images/leftMenu/landIcon.png'),
+        'ocean' : require('../assets/images/leftMenu/oceanIcon.png'),
       },
 
       backButtonImage : require('../assets/images/general/backArrow.png'),
@@ -222,14 +348,14 @@ export default {
       
 
       landImage : {
-        "cityLand" : require('../assets/images/leftMenu/landSelection/cityLand.png'),
-        "cityLandSelected" : require('../assets/images/leftMenu/landSelection/cityLandSelected.png'),
-        "agriculturalLand" : require('../assets/images/leftMenu/landSelection/agriculturalLand.png'),
-        "agriculturalLandSelected" : require('../assets/images/leftMenu/landSelection/agriculturalLandSelected.png'),
-        "forestRights" : require('../assets/images/leftMenu/landSelection/forestRights.png'),
-        "forestRightsSelected" : require('../assets/images/leftMenu/landSelection/forestRightsSelected.png'),
-        "freshWater" : require('../assets/images/leftMenu/landSelection/freshWater.png'),
-        "freshWaterSelected" : require('../assets/images/leftMenu/landSelection/freshWaterSelected.png'),
+        'cityLand' : require('../assets/images/leftMenu/landSelection/cityLand.png'),
+        'cityLandSelected' : require('../assets/images/leftMenu/landSelection/cityLandSelected.png'),
+        'agriculturalLand' : require('../assets/images/leftMenu/landSelection/agriculturalLand.png'),
+        'agriculturalLandSelected' : require('../assets/images/leftMenu/landSelection/agriculturalLandSelected.png'),
+        'forestRights' : require('../assets/images/leftMenu/landSelection/forestRights.png'),
+        'forestRightsSelected' : require('../assets/images/leftMenu/landSelection/forestRightsSelected.png'),
+        'freshWater' : require('../assets/images/leftMenu/landSelection/freshWater.png'),
+        'freshWaterSelected' : require('../assets/images/leftMenu/landSelection/freshWaterSelected.png'),
       }
 
 
@@ -240,101 +366,138 @@ export default {
 
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+    checkLeftMenuSelectingCountry(){return store.state.leftMenuSelectingCountry},
+    checkLeftMenuSelectingArea(){return store.state.leftMenuSelectingArea},
+    checkLeftMenuSelectingLand(){return store.state.leftMenuSelectingLand},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+    checkLeftMenuSelectingCountry(country){
+      this.selectingCountry = country
+      if(country != ''){
+        this.selectingCountryName = store.state.countryDictionary[country].countryName
+        this.selectingCountryImage = store.state.countryDictionary[country].countryImage
+      }
+      else{
+        this.selectingCountryName = ''
+        this.selectingCountryImage = ''
+      }
+      
+    },
+    checkLeftMenuSelectingArea(area){
+      this.selectingArea = area
+      if(area != ''){
+        this.selectingAreaName = store.state.areaDictionary[area].areaName
+      }
+      else{
+        this.selectingAreaName = ''
+      }
+    },
+
+    checkLeftMenuSelectingLand (land){
+      this.selectingLand = land
+    },
+
+
+  },
   created(){
-    this.setupCountryList();
-    this.setupAreaList();
+    this.setupCountryList()
+    this.setupAreaList()
   },
   methods:{
     selectTab(tab){
-      this.selectingTab = tab;
+      this.selectingTab = tab
       for(var loop = 0 ; loop < this.tabArray.length ; loop++){
-        document.getElementById(this.tabButtonId[this.tabArray[loop]]).classList.remove("leftMenuTabSelecting");
-        document.getElementById(this.tabTitleId[this.tabArray[loop]]).classList.remove("tabTitleAreaSelecting");
+        document.getElementById(this.tabButtonId[this.tabArray[loop]]).classList.remove('leftMenuTabSelecting')
+        document.getElementById(this.tabTitleId[this.tabArray[loop]]).classList.remove('tabTitleAreaSelecting')
       }
-      document.getElementById(this.tabButtonId[tab]).classList.add("leftMenuTabSelecting");
-      document.getElementById(this.tabTitleId[tab]).classList.add("tabTitleAreaSelecting");
+      document.getElementById(this.tabButtonId[tab]).classList.add('leftMenuTabSelecting')
+      document.getElementById(this.tabTitleId[tab]).classList.add('tabTitleAreaSelecting')
     },
 
     setupCountryList(){
-      let self = this;
+      let self = this
       //等到 container 存在
-      if(document.getElementById("landTabCountrySelectionArea") == null){
+      if(document.getElementById('landTabCountrySelectionArea') == null){
         setTimeout(function(){
-          self.setupCountryList();
+          self.setupCountryList()
         },200) 
       }
       else{
         for(var setupCountryLoop = 0 ; setupCountryLoop < this.countrySelectionJsonData.length ; setupCountryLoop ++){
 
-          console.log("setup country " + setupCountryLoop);
-          let countryId = this.countrySelectionJsonData[setupCountryLoop]["id"];
-          let countryName = this.countrySelectionJsonData[setupCountryLoop]["name"];
-          let countryLocalImage = this.countrySelectionJsonData[setupCountryLoop]["localImageUrl"];
-          let countryUnlock = this.countrySelectionJsonData[setupCountryLoop]["unlock"];
+          console.log('setup country ' + setupCountryLoop)
+          let countryId = this.countrySelectionJsonData[setupCountryLoop]['id']
+          let countryName = this.countrySelectionJsonData[setupCountryLoop]['name']
+          let countryLocalImage = this.countrySelectionJsonData[setupCountryLoop]['localImageUrl']
+          let countryUnlock = this.countrySelectionJsonData[setupCountryLoop]['unlock']
 
 
-          let newCountryDictionary = {"countryName":countryName , "countryImage" : 'static/images/countrySelection/' + countryLocalImage};
-          store.state.countryDictionary[countryId] = newCountryDictionary;
+          let newCountryDictionary = {'countryName':countryName , 'countryImage' : 'static/images/countrySelection/' + countryLocalImage}
+          store.state.countryDictionary[countryId] = newCountryDictionary
 
 
           // let newCountry = document.createElement("countrySelectionTemplate");
           let newCountry = new countrySelectionTemplateClass({
             propsData: {
-              "countryId" : countryId,
-              "countryName" : countryName,
-              "countryLocalImage" : countryLocalImage,
-              "countryUnlock" : countryUnlock,
+              'countryId' : countryId,
+              'countryName' : countryName,
+              'countryLocalImage' : countryLocalImage,
+              'countryUnlock' : countryUnlock,
             }
-          });
+          })
           newCountry.$mount()
-          document.getElementById("landTabCountrySelectionArea").appendChild(newCountry.$el);
+          document.getElementById('landTabCountrySelectionArea').appendChild(newCountry.$el)
         }
       }
     },
 
     setupAreaList(){
-      let self = this;
+      let self = this
       //等到 container 存在
-      if(document.getElementById("landTabSubSelectionArea") == null){
+      if(document.getElementById('landTabSubSelectionArea') == null){
         setTimeout(function(){
-          self.setupAreaList();
+          self.setupAreaList()
         },200) 
       }
       else{
         for(var setupAreaLoop = 0 ; setupAreaLoop < this.areaSelectionJsonData.length ; setupAreaLoop ++){
-          let areaId = this.areaSelectionJsonData[setupAreaLoop]["id"];
-          let countryId = this.areaSelectionJsonData[setupAreaLoop]["countryId"];
-          let areaName = this.areaSelectionJsonData[setupAreaLoop]["name"];
-          let latitude = this.areaSelectionJsonData[setupAreaLoop]["latitude"];
-          let longitude = this.areaSelectionJsonData[setupAreaLoop]["longitude"];
-          let height = this.areaSelectionJsonData[setupAreaLoop]["height"];
-          let cesiumData = this.areaSelectionJsonData[setupAreaLoop]["cesiumData"];
+          let areaId = this.areaSelectionJsonData[setupAreaLoop]['id']
+          let countryId = this.areaSelectionJsonData[setupAreaLoop]['countryId']
+          let areaName = this.areaSelectionJsonData[setupAreaLoop]['name']
+          let latitude = this.areaSelectionJsonData[setupAreaLoop]['latitude']
+          let longitude = this.areaSelectionJsonData[setupAreaLoop]['longitude']
+          let height = this.areaSelectionJsonData[setupAreaLoop]['height']
+          let cesiumData = this.areaSelectionJsonData[setupAreaLoop]['cesiumData']
 
 
           let newAreaDictionary = {
-            "countryId":countryId,
-            "areaName" : areaName,
-            "latitude" : latitude,
-            "longitude" : longitude,
-            "height" : height,
-            "cesiumData" : cesiumData       
-          };
+            'countryId':countryId,
+            'areaName' : areaName,
+            'latitude' : latitude,
+            'longitude' : longitude,
+            'height' : height,
+            'cesiumData' : cesiumData       
+          }
 
-          store.state.areaDictionary[areaId] = newAreaDictionary;
+          store.state.areaDictionary[areaId] = newAreaDictionary
 
           let newArea = new areaSelectionTemplateClass({
             propsData: {
-              "areaId" : areaId,
-              "countryId" : countryId,
-              "areaName" : areaName,
-              "latitude" : latitude,
-              "longitude" : longitude,
-              "height" : height,
-              "cesiumData" : cesiumData
+              'areaId' : areaId,
+              'countryId' : countryId,
+              'areaName' : areaName,
+              'latitude' : latitude,
+              'longitude' : longitude,
+              'height' : height,
+              'cesiumData' : cesiumData
             }
-          });
+          })
           newArea.$mount()
-          document.getElementById("landTabSubSelectionArea").appendChild(newArea.$el);
+          document.getElementById('landTabSubSelectionArea').appendChild(newArea.$el)
 
 
         }
@@ -343,12 +506,12 @@ export default {
 
 
     selectLand(land){
-      console.log("select land  " + land);
-      store.state.leftMenuSelectingLand = land;
+      console.log('select land  ' + land)
+      store.state.leftMenuSelectingLand = land
     },
 
     unselectLand(){
-      store.state.leftMenuSelectingLand = "";
+      store.state.leftMenuSelectingLand = ''
     },
 
 
@@ -357,52 +520,15 @@ export default {
 
 
     backToCountrySelection(){
-      store.state.leftMenuSelectingCountry = "";
+      store.state.leftMenuSelectingCountry = ''
     },
     backToAreaSelection(){
-      store.state.leftMenuSelectingLand = "";
-      store.state.leftMenuSelectingArea = "";
-      store.state.cesiumBaseMapData = "";
-      store.state.isShow3DScene = true;
+      store.state.leftMenuSelectingLand = ''
+      store.state.leftMenuSelectingArea = ''
+      store.state.cesiumBaseMapData = ''
+      store.state.isShow3DScene = true
 
     }
-
-
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-    checkLeftMenuSelectingCountry(){return store.state.leftMenuSelectingCountry},
-    checkLeftMenuSelectingArea(){return store.state.leftMenuSelectingArea},
-    checkLeftMenuSelectingLand(){return store.state.leftMenuSelectingLand},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
-    checkLeftMenuSelectingCountry(country){
-      this.selectingCountry = country;
-      if(country != ""){
-        this.selectingCountryName = store.state.countryDictionary[country].countryName;
-        this.selectingCountryImage = store.state.countryDictionary[country].countryImage;
-      }
-      else{
-        this.selectingCountryName = "";
-        this.selectingCountryImage = "";
-      }
-      
-    },
-    checkLeftMenuSelectingArea(area){
-      this.selectingArea = area;
-      if(area != ""){
-        this.selectingAreaName = store.state.areaDictionary[area].areaName;
-      }
-      else{
-        this.selectingAreaName = "";
-      }
-    },
-
-    checkLeftMenuSelectingLand (land){
-      this.selectingLand = land;
-    },
 
 
   },

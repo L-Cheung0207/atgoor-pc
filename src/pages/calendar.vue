@@ -1,41 +1,39 @@
 <template>
   <div>
-    <calendarTest></calendarTest>
+    <calendarTest />
   </div>
 </template>
 
 <script>
-  import i18n from '@/language';
-  import { store } from '../store'
-  import calendarTest from '@/components/calendarTest'
+import calendarTest from '@/components/calendarTest'
 
-  export default {
-    name: 'ceddsloar',
-    components: {
-      calendarTest,
-    },
-    data () {
-      return {
+export default {
+  name: 'AB',
+  components: {
+    calendarTest,
+  },
+  data () {
+    return {
         
-      }
-    },
-    created(){
+    }
+  },
 
-    },
+  computed:{
+    //checkProcessingStage(){return store.state.processingStage;},
+  },
+  watch:{
+    //checkProcessingStage(stage){console.log("stage : " + stage);},
+  },
+  created(){
 
-    methods:{
+  },
 
-    },
+  methods:{
 
-    computed:{
-      //checkProcessingStage(){return store.state.processingStage;},
-    },
-    watch:{
-      //checkProcessingStage(stage){console.log("stage : " + stage);},
-    },
+  },
 
 
-  }
+}
 </script>
 
 

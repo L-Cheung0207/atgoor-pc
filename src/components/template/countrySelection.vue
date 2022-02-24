@@ -1,24 +1,36 @@
 <template>
   <div>
-    <div :id="'countrySelection_' + this.countryId" class="countrySelectionTemplate" @mouseup="selectCountry()">
-      <span :id="'countrySelectionContent_' + this.countryId">
-        <img class="countrySelectionImage" :src="this.countryImageDynamic"/>
-        <div class="countrySelectionTitle" v-html="this.countryName[this.language]">
-        </div>
+    <div
+      :id="'countrySelection_' + countryId"
+      class="countrySelectionTemplate"
+      @mouseup="selectCountry()"
+    >
+      <span :id="'countrySelectionContent_' + countryId">
+        <img
+          class="countrySelectionImage"
+          :src="countryImageDynamic"
+        >
+        <div
+          class="countrySelectionTitle"
+          v-html="countryName[language]"
+        />
       </span>
-      <img class="countrySelectionLockImage" :src="this.countrySelectionLockImage" v-show="!this.countryUnloackDynamic">
-      
+      <img
+        v-show="!countryUnloackDynamic"
+        class="countrySelectionLockImage"
+        :src="countrySelectionLockImage"
+      >
     </div>
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '@/store'
 
 export default {
-  name: 'countrySelection',
+  name: 'CountrySelection',
   props: ['countryId','countryName','countryLocalImage','countryUnlock'],
   data () {
     return {
@@ -29,39 +41,46 @@ export default {
       countrySelectionLockImage : require('../../assets/images/leftMenu/countrySelection/lock.png'),
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+  },
   created(){
-    this.setUpImage();
-    this.unlockSelection();
+    this.setUpImage()
+    this.unlockSelection()
   },
   methods:{
     setUpImage(){
       if(this.countryLocalImage != null){
-        this.countryImageDynamic = 'static/images/countrySelection/' + this.countryLocalImage;
+        this.countryImageDynamic = 'static/images/countrySelection/' + this.countryLocalImage
       }
     },
 
     unlockSelection(){
-      let self = this;
-      if(document.getElementById("countrySelection_" + this.countryId) == null){
+      let self = this
+      if(document.getElementById('countrySelection_' + this.countryId) == null){
         setTimeout(function(){
-          self.unlockSelection();
+          self.unlockSelection()
         },200)
       }
       else{
         if(this.countryUnlock !=null){
           if(this.countryUnlock == true){
-            this.countryUnloackDynamic = true;
-            document.getElementById("countrySelection_" + this.countryId).classList.add("touch");
+            this.countryUnloackDynamic = true
+            document.getElementById('countrySelection_' + this.countryId).classList.add('touch')
           }
           else{
-            document.getElementById("countrySelectionContent_" + this.countryId).classList.add("halfOpacity");
+            document.getElementById('countrySelectionContent_' + this.countryId).classList.add('halfOpacity')
           }
         }
       }
     },
 
     selectCountry(){
-      store.state.leftMenuSelectingCountry = this.countryId;
+      store.state.leftMenuSelectingCountry = this.countryId
 
 
 
@@ -70,13 +89,6 @@ export default {
 
     },
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
   },
 }
 </script>

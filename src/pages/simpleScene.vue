@@ -1,48 +1,42 @@
 <template>
   <div class="font">
     <transition name="fade">
-      <landing3DSimple v-show="this.isShow3DScene"></landing3DSimple> 
+      <landing3DSimple v-show="isShow3DScene" /> 
     </transition>
-
   </div>
 </template>
 
 <script>
-  import i18n from '@/language';
-  import { store } from '../store'
-
-
-  import landing3DSimple from '@/components/landing3DSimple'
+import landing3DSimple from '@/components/landing3DSimple'
 
   
 
-  export default {
-    name: 'hkatg',
-    components: {
-      landing3DSimple,
-    },
-    data () {
-      return {
-        isShow3DScene : true,
-      }
-    },
-    created(){
+export default {
+  components: {
+    landing3DSimple,
+  },
+  data () {
+    return {
+      isShow3DScene : true,
+    }
+  },
 
-    },
-
-    methods:{
-
-    },
-
-    computed:{
+  computed:{
     
-    },
-    watch:{
+  },
+  watch:{
       
-    },
+  },
+  created(){
+
+  },
+
+  methods:{
+
+  },
 
 
-  }
+}
 </script>
 <style scoped>
 

@@ -1,70 +1,112 @@
 <template>
   <div>
-    <div class="characterSelectBg touch">
-    </div>
+    <div class="characterSelectBg touch" />
 
 
     <div class="characterSelectArea">
       <div class="characterSelectTitleArea">
-        <div class="characterSelectTitle" v-html="$t('characterSelect')"></div>
+        <div
+          class="characterSelectTitle"
+          v-html="$t('characterSelect')"
+        />
       </div>
       <div class="characterSelectionWholeArea">
         <div class="characterSelectionArea">
-          <div id="characterSelection1" class="characterSelection touch" @mouseup="selectCharacter('character1')" @mouseenter="selectingCharacter('character1',true)" @mouseleave="selectingCharacter('character1',false)">
-            <img class="characterSelectionImage" :src="characterImage['character1']">
-            <div class="characterSelectionText" v-html="$t('characterSelection')['character1']"></div>
+          <div
+            id="characterSelection1"
+            class="characterSelection touch"
+            @mouseup="selectCharacter('character1')"
+            @mouseenter="selectingCharacter('character1',true)"
+            @mouseleave="selectingCharacter('character1',false)"
+          >
+            <img
+              class="characterSelectionImage"
+              :src="characterImage['character1']"
+            >
+            <div
+              class="characterSelectionText"
+              v-html="$t('characterSelection')['character1']"
+            />
           </div>
-
         </div>
         <div class="characterSelectionArea">
-          <div id="characterSelection2" class="characterSelection touch" @mouseup="selectCharacter('character2')" @mouseenter="selectingCharacter('character2',true)" @mouseleave="selectingCharacter('character2',false)">
-            <img class="characterSelectionImage" :src="characterImage['character2']">
-            <div class="characterSelectionText" v-html="$t('characterSelection')['character2']"></div>
+          <div
+            id="characterSelection2"
+            class="characterSelection touch"
+            @mouseup="selectCharacter('character2')"
+            @mouseenter="selectingCharacter('character2',true)"
+            @mouseleave="selectingCharacter('character2',false)"
+          >
+            <img
+              class="characterSelectionImage"
+              :src="characterImage['character2']"
+            >
+            <div
+              class="characterSelectionText"
+              v-html="$t('characterSelection')['character2']"
+            />
           </div>
         </div>
         <div class="characterSelectionArea">
           <div class="characterSelection">
-            <img class="characterSelectionImage" :src="characterImage['character3']">
-            <div class="characterSelectionText characterSelectionTextDisable" v-html="$t('characterSelection')['character3']"></div>
+            <img
+              class="characterSelectionImage"
+              :src="characterImage['character3']"
+            >
+            <div
+              class="characterSelectionText characterSelectionTextDisable"
+              v-html="$t('characterSelection')['character3']"
+            />
           </div>
         </div>
       </div>
-      <div class="characterSelectCloseButtonArea touch" @mouseup="closeCharacterSelect()">
-        <img class="characterSelectCloseButton" :src="circleCloseButton">
+      <div
+        class="characterSelectCloseButtonArea touch"
+        @mouseup="closeCharacterSelect()"
+      >
+        <img
+          class="characterSelectCloseButton"
+          :src="circleCloseButton"
+        >
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '../store'
 
 export default {
-  name: 'characterSelect',
+  name: 'CharacterSelect',
   data () {
     return {
       language : i18n.locale,
 
       characterImage : {
-        "character1" : require('../assets/images/characterSelect/character1.png'),
-        "character2" : require('../assets/images/characterSelect/character2.png'),
-        "character3" : require('../assets/images/characterSelect/character3.png'),
+        'character1' : require('../assets/images/characterSelect/character1.png'),
+        'character2' : require('../assets/images/characterSelect/character2.png'),
+        'character3' : require('../assets/images/characterSelect/character3.png'),
       },
 
-      characterArray : ["character1" , "character2" , "character3" , "character4"],
+      characterArray : ['character1' , 'character2' , 'character3' , 'character4'],
       characterElementId : {
-        "character1" : "characterSelection1",
-        "character2" : "characterSelection2",
-        "character3" : "characterSelection3",
+        'character1' : 'characterSelection1',
+        'character2' : 'characterSelection2',
+        'character3' : 'characterSelection3',
       },
 
 
-      "circleCloseButton" : require('../assets/images/global/circleCloseButton.png'),
+      'circleCloseButton' : require('../assets/images/global/circleCloseButton.png'),
     }
+  },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
   },
   created(){
 
@@ -75,39 +117,32 @@ export default {
 
 
     closeCharacterSelect(){
-      store.state.isShowCharacterSelect = false;
+      store.state.isShowCharacterSelect = false
     },
 
 
     selectingCharacter(character , selecting){
       if(selecting){
-        document.getElementById(this.characterElementId[character]).classList.add('selectingCharacter');
+        document.getElementById(this.characterElementId[character]).classList.add('selectingCharacter')
       }
       else{
-        document.getElementById(this.characterElementId[character]).classList.remove('selectingCharacter');
+        document.getElementById(this.characterElementId[character]).classList.remove('selectingCharacter')
       }
       
     },
 
 
     selectCharacter(character){
-      store.state.selectingCharacter = character;
-      store.state.isShowCharacterSelect = false;
-      store.state.isShow3DScene = false;
-      store.state.leftMenuSlideInOutEvent = "out";
+      store.state.selectingCharacter = character
+      store.state.isShowCharacterSelect = false
+      store.state.isShow3DScene = false
+      store.state.leftMenuSlideInOutEvent = 'out'
 
 
-      store.state.cesiumFlyToLocation = store.state.selectingLocation;
+      store.state.cesiumFlyToLocation = store.state.selectingLocation
       // store.state.selectingLocation = "";
     },
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
   },
 }
 </script>

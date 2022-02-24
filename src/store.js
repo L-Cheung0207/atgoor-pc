@@ -20,18 +20,18 @@ export const store = new Vuex.Store({
 
 
     // Menu slide in out
-    leftMenuSlideInOutEvent : "",
-    rightMenuSlideInOutEvent : "",
+    leftMenuSlideInOutEvent : '',
+    rightMenuSlideInOutEvent : '',
 
     
 
     //設定要 cesium zoom 去的 location
-    cesiumFlyToLocation : "",
+    cesiumFlyToLocation : '',
 
 
     //選擇緊的地點 同 角色
-    selectingLocation : "",
-    selectingCharacter : "",
+    selectingLocation : '',
+    selectingCharacter : '',
 
 
 
@@ -52,14 +52,14 @@ export const store = new Vuex.Store({
 
 
     //新 left menu
-    leftMenuSelectingTab : "land",
-    leftMenuSelectingCountry : "",
-    leftMenuSelectingArea : "",
-    leftMenuSelectingLand : "",
+    leftMenuSelectingTab : 'land',
+    leftMenuSelectingCountry : '',
+    leftMenuSelectingArea : '',
+    leftMenuSelectingLand : '',
 
     //cesium
-    cesiumBaseMapData : "",
-    cesiumDataLayerData : "",
+    cesiumBaseMapData : '',
+    cesiumDataLayerData : '',
 
 
 

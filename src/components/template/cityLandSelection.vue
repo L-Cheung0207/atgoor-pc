@@ -1,117 +1,186 @@
 <template>
   <div>
-
-    <div class="landSubSelectionArea touch" @mouseup="selectCityLand('residential')">
-      <div class="landSubSelectionTitle" v-html="$t('residentialLand')">
-      </div>
+    <div
+      class="landSubSelectionArea touch"
+      @mouseup="selectCityLand('residential')"
+    >
+      <div
+        class="landSubSelectionTitle"
+        v-html="$t('residentialLand')"
+      />
       <div class="landSubSelectionArrowArea">
-      <img class="landSubSelectionArrow" :src="this.downArrow" v-show="this.selectingCityLand != 'residential'">
-      <img class="landSubSelectionArrow" :src="this.upArrow" v-show="this.selectingCityLand == 'residential'">
+        <img
+          v-show="selectingCityLand != 'residential'"
+          class="landSubSelectionArrow"
+          :src="downArrow"
+        >
+        <img
+          v-show="selectingCityLand == 'residential'"
+          class="landSubSelectionArrow"
+          :src="upArrow"
+        >
       </div>
     </div>
-    <div class="landSubSelectionDetailArea touchAll" v-show="this.selectingCityLand == 'residential'">
+    <div
+      v-show="selectingCityLand == 'residential'"
+      class="landSubSelectionDetailArea touchAll"
+    >
       <div class="landSubSelectionDetailScrollArea touch">
-
-
-
-        <span class="landSubSelectionDetailSelection touch" @mouseup="selectData('cityBuilding')" v-show="this.selectingData != 'cityBuilding'">
+        <span
+          v-show="selectingData != 'cityBuilding'"
+          class="landSubSelectionDetailSelection touch"
+          @mouseup="selectData('cityBuilding')"
+        >
           <div class="landSubSelectionDetailSelectionIconImageArea">
-            <img :src="this.icon['cityBuilding']" class="landSubSelectionDetailSelectionIconImage">
+            <img
+              :src="icon['cityBuilding']"
+              class="landSubSelectionDetailSelectionIconImage"
+            >
           </div>
           <div class="landSubSelectionDetailSelectionTextArea">
-            <div class="landSubSelectionDetailSelectionText" v-html="$t('cityBuilding')">
-            </div>
+            <div
+              class="landSubSelectionDetailSelectionText"
+              v-html="$t('cityBuilding')"
+            />
           </div>
         </span>
 
-        <span class="landSubSelectionDetailSelection landSubSelectionDetailSelectionSelected touch" @mouseup="unselectData()" v-show="this.selectingData == 'cityBuilding'">
+        <span
+          v-show="selectingData == 'cityBuilding'"
+          class="landSubSelectionDetailSelection landSubSelectionDetailSelectionSelected touch"
+          @mouseup="unselectData()"
+        >
           <div class="landSubSelectionDetailSelectionIconImageArea">
-            <img :src="this.icon['cityBuildingSelected']" class="landSubSelectionDetailSelectionIconImage">
+            <img
+              :src="icon['cityBuildingSelected']"
+              class="landSubSelectionDetailSelectionIconImage"
+            >
           </div>
           <div class="landSubSelectionDetailSelectionTextArea">
-            <div class="landSubSelectionDetailSelectionText landSubSelectionDetailSelectionTextSelected" v-html="$t('cityBuilding')">
-            </div>
-          </div>
-        </span>
-
-
-
-
-        <span class="landSubSelectionDetailSelection touch" @mouseup="selectData('cityRoad')" v-show="this.selectingData != 'cityRoad'">
-          <div class="landSubSelectionDetailSelectionIconImageArea">
-            <img :src="this.icon['cityRoad']" class="landSubSelectionDetailSelectionIconImage">
-          </div>
-          <div class="landSubSelectionDetailSelectionTextArea">
-            <div class="landSubSelectionDetailSelectionText"  v-html="$t('cityRoad')">
-            </div>
-          </div>
-        </span>
-
-        <span class="landSubSelectionDetailSelection landSubSelectionDetailSelectionSelected touch" @mouseup="unselectData()" v-show="this.selectingData == 'cityRoad'">
-          <div class="landSubSelectionDetailSelectionIconImageArea">
-            <img :src="this.icon['cityRoadSelected']" class="landSubSelectionDetailSelectionIconImage">
-          </div>
-          <div class="landSubSelectionDetailSelectionTextArea">
-            <div class="landSubSelectionDetailSelectionText landSubSelectionDetailSelectionTextSelected"  v-html="$t('cityRoad')">
-            </div>
+            <div
+              class="landSubSelectionDetailSelectionText landSubSelectionDetailSelectionTextSelected"
+              v-html="$t('cityBuilding')"
+            />
           </div>
         </span>
 
 
 
 
+        <span
+          v-show="selectingData != 'cityRoad'"
+          class="landSubSelectionDetailSelection touch"
+          @mouseup="selectData('cityRoad')"
+        >
+          <div class="landSubSelectionDetailSelectionIconImageArea">
+            <img
+              :src="icon['cityRoad']"
+              class="landSubSelectionDetailSelectionIconImage"
+            >
+          </div>
+          <div class="landSubSelectionDetailSelectionTextArea">
+            <div
+              class="landSubSelectionDetailSelectionText"
+              v-html="$t('cityRoad')"
+            />
+          </div>
+        </span>
+
+        <span
+          v-show="selectingData == 'cityRoad'"
+          class="landSubSelectionDetailSelection landSubSelectionDetailSelectionSelected touch"
+          @mouseup="unselectData()"
+        >
+          <div class="landSubSelectionDetailSelectionIconImageArea">
+            <img
+              :src="icon['cityRoadSelected']"
+              class="landSubSelectionDetailSelectionIconImage"
+            >
+          </div>
+          <div class="landSubSelectionDetailSelectionTextArea">
+            <div
+              class="landSubSelectionDetailSelectionText landSubSelectionDetailSelectionTextSelected"
+              v-html="$t('cityRoad')"
+            />
+          </div>
+        </span>
       </div>
     </div>
 
 
 
-    <div class="landSubSelectionArea touch" @mouseup="selectCityLand('commercial')">
-      <div class="landSubSelectionTitle"  v-html="$t('commercialLand')">
-      </div>
+    <div
+      class="landSubSelectionArea touch"
+      @mouseup="selectCityLand('commercial')"
+    >
+      <div
+        class="landSubSelectionTitle"
+        v-html="$t('commercialLand')"
+      />
       <div class="landSubSelectionArrowArea">
-      <img class="landSubSelectionArrow" :src="this.downArrow" v-show="this.selectingCityLand != 'commercial'">
-      <img class="landSubSelectionArrow" :src="this.upArrow" v-show="this.selectingCityLand == 'commercial'">
+        <img
+          v-show="selectingCityLand != 'commercial'"
+          class="landSubSelectionArrow"
+          :src="downArrow"
+        >
+        <img
+          v-show="selectingCityLand == 'commercial'"
+          class="landSubSelectionArrow"
+          :src="upArrow"
+        >
       </div>
     </div>
-    <div class="landSubSelectionDetailArea touchAll" v-show="this.selectingCityLand == 'commercial'">
-      <div class="landSubSelectionDetailScrollArea touch">
-      </div>
+    <div
+      v-show="selectingCityLand == 'commercial'"
+      class="landSubSelectionDetailArea touchAll"
+    >
+      <div class="landSubSelectionDetailScrollArea touch" />
     </div>
 
-    <div class="landSubSelectionArea touch" @mouseup="selectCityLand('commercialResidential')">
-      <div class="landSubSelectionTitle" v-html="$t('residentialCommercialLand')">
-      </div>
+    <div
+      class="landSubSelectionArea touch"
+      @mouseup="selectCityLand('commercialResidential')"
+    >
+      <div
+        class="landSubSelectionTitle"
+        v-html="$t('residentialCommercialLand')"
+      />
       <div class="landSubSelectionArrowArea">
-      <img class="landSubSelectionArrow" :src="this.downArrow" v-show="this.selectingCityLand != 'commercialResidential'">
-      <img class="landSubSelectionArrow" :src="this.upArrow" v-show="this.selectingCityLand == 'commercialResidential'">
+        <img
+          v-show="selectingCityLand != 'commercialResidential'"
+          class="landSubSelectionArrow"
+          :src="downArrow"
+        >
+        <img
+          v-show="selectingCityLand == 'commercialResidential'"
+          class="landSubSelectionArrow"
+          :src="upArrow"
+        >
       </div>
     </div>
-    <div class="landSubSelectionDetailArea touchAll" v-show="this.selectingCityLand == 'commercialResidential'">
-      <div class="landSubSelectionDetailScrollArea touch">
-      </div>
+    <div
+      v-show="selectingCityLand == 'commercialResidential'"
+      class="landSubSelectionDetailArea touchAll"
+    >
+      <div class="landSubSelectionDetailScrollArea touch" />
     </div>
-
-
-
-
-    
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '@/store'
 
 export default {
-  name: 'cityLandSelection',
+  name: 'CityLandSelection',
   props: [''],
 
   data () {
     return {
       language : i18n.locale,
-      selectingCityLand : "",
-      selectingData : "",
+      selectingCityLand : '',
+      selectingData : '',
 
 
       upArrow : require('@/assets/images/general/upArrow.png'),
@@ -119,12 +188,37 @@ export default {
 
 
       icon : {
-        "cityRoad" : require('@/assets/images/leftMenu/cityLand/cityRoad.png'),
-        "cityBuilding" : require('@/assets/images/leftMenu/cityLand/cityBuilding.png'),
-        "cityRoadSelected" : require('@/assets/images/leftMenu/cityLand/cityRoadSelected.png'),
-        "cityBuildingSelected" : require('@/assets/images/leftMenu/cityLand/cityBuildingSelected.png'),
+        'cityRoad' : require('@/assets/images/leftMenu/cityLand/cityRoad.png'),
+        'cityBuilding' : require('@/assets/images/leftMenu/cityLand/cityBuilding.png'),
+        'cityRoadSelected' : require('@/assets/images/leftMenu/cityLand/cityRoadSelected.png'),
+        'cityBuildingSelected' : require('@/assets/images/leftMenu/cityLand/cityBuildingSelected.png'),
       }
     }
+  },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+    checkLeftMenuSelectingArea(){return store.state.leftMenuSelectingArea},
+    checkLeftMenuSelectingLand(){return store.state.leftMenuSelectingLand},
+
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+    checkLeftMenuSelectingArea(area){
+      if(area == ''){
+        this.selectingData = ''
+        this.selectingCityLand = ''
+        store.state.cesiumDataLayerData = ''
+      }
+    },
+    checkLeftMenuSelectingLand(land){
+      if(land != 'cityLand'){
+        this.selectingData = ''
+        this.selectingCityLand = ''
+        store.state.cesiumDataLayerData = ''
+      }
+    },
+
   },
   created(){
     // this.setUpImage();
@@ -136,27 +230,27 @@ export default {
   methods:{
     selectCityLand(cityLand){
       if(cityLand == this.selectingCityLand){
-        this.selectingCityLand = "";
+        this.selectingCityLand = ''
       }
       else{
-        this.selectingCityLand = cityLand;
+        this.selectingCityLand = cityLand
       }
     },
 
     selectData(data){
       
       if(this.selectingData == data){
-        this.selectingData = "";
+        this.selectingData = ''
       }
       else{
-        this.selectingData = data;
-        console.log(this.selectingData);
+        this.selectingData = data
+        console.log(this.selectingData)
       }
 
-      if(store.state.leftMenuSelectingArea != ""){
+      if(store.state.leftMenuSelectingArea != ''){
         if(store.state.areaDictionary[store.state.leftMenuSelectingArea].cesiumData[data] != null){
-          console.log("display data " + store.state.areaDictionary[store.state.leftMenuSelectingArea].cesiumData[data]);
-          store.state.cesiumDataLayerData = store.state.areaDictionary[store.state.leftMenuSelectingArea].cesiumData[data];
+          console.log('display data ' + store.state.areaDictionary[store.state.leftMenuSelectingArea].cesiumData[data])
+          store.state.cesiumDataLayerData = store.state.areaDictionary[store.state.leftMenuSelectingArea].cesiumData[data]
         }
       }
 
@@ -167,36 +261,11 @@ export default {
     },
 
     unselectData(){
-      this.selectingData = "";
-      store.state.cesiumDataLayerData = "";
+      this.selectingData = ''
+      store.state.cesiumDataLayerData = ''
     }
 
     
-
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-    checkLeftMenuSelectingArea(){return store.state.leftMenuSelectingArea},
-    checkLeftMenuSelectingLand(){return store.state.leftMenuSelectingLand},
-
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
-    checkLeftMenuSelectingArea(area){
-      if(area == ""){
-        this.selectingData = "";
-        this.selectingCityLand = "";
-        store.state.cesiumDataLayerData = "";
-      }
-    },
-    checkLeftMenuSelectingLand(land){
-      if(land != "cityLand"){
-        this.selectingData = "";
-        this.selectingCityLand = "";
-        store.state.cesiumDataLayerData = "";
-      }
-    },
 
   },
 }

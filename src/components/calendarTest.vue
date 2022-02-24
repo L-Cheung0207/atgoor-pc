@@ -1,35 +1,31 @@
 <template>
   <div>
     <div class="calendarTestArea touchAll">
-      <vc-calendar :attributes='attrs'></vc-calendar>
-<!--       <vc-date-picker mode="date" is-inline="true"/> -->
+      <vc-calendar :attributes="attrs" />
+      <!--       <vc-date-picker mode="date" is-inline="true"/> -->
       <vc-calendar is-expanded />
-
-
-
     </div>
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
-import { store } from '../store'
+import i18n from '@/language'
 
-import { VCalendar } from 'v-calendar'
+// import { VCalendar } from 'v-calendar'
 
 export default {
-  name: 'calendarTest',
+  name: 'CalendarTest',
   components: {
-    VCalendar,
+    // VCalendar,
   },
   data () {
     return {
       language : i18n.locale,
       range: {
-      start: new Date(2020, 0, 1),
-      end: new Date(2020, 0, 5)
-    },
+        start: new Date(2020, 0, 1),
+        end: new Date(2020, 0, 5)
+      },
       date: new Date(),
     }
 
@@ -115,18 +111,18 @@ export default {
     //       ],
     //     };
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+  },
   created(){
 
   },
   methods:{
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
   },
 }
 </script>

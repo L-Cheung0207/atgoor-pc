@@ -1,13 +1,18 @@
 <template>
   <div>
-
     <div class="cesiumDataLoadingScreen touch">
       <div class="cesiumDataLoadingArea">
         <div class="cesiumDataLoadingImageArea">
-          <img class="cesiumDataLoadingImage" :src="dataLoadingImage"/>
+          <img
+            class="cesiumDataLoadingImage"
+            :src="dataLoadingImage"
+          >
         </div>
         <div class="cesiumDataLoadingTextArea">
-          <div class="cesiumDataLoadingText" v-html="$t('loading')"></div>
+          <div
+            class="cesiumDataLoadingText"
+            v-html="$t('loading')"
+          />
         </div>
       </div>
     </div>
@@ -16,11 +21,10 @@
 
 <script>
 
-import i18n from '@/language';
-import { store } from '../store'
+import i18n from '@/language'
 
 export default {
-  name: 'cesiumDataLoading',
+  name: 'CesiumDataLoading',
   data () {
     return {
       language : i18n.locale,
@@ -28,19 +32,19 @@ export default {
       
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+    
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+    
+  },
   created(){
 
   },
   methods:{
-    
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-    
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
     
   },
 }
@@ -96,8 +100,3 @@ export default {
 }
 
 </style>
-
-
-
-// WEBPACK FOOTER //
-// src/components/cesiumDataLoading.vue

@@ -1,131 +1,105 @@
 <template>
   <div class="font">
-<!--     <div>!!!!!!</div>
-    HKATG lalalala
-    <div v-html="$t('init')"></div> -->
-
-
-
-   <!--  <div id="background" :style="{ backgroundImage: `url('${backgroundImage}')` }" ></div>
- -->
-    <cesium></cesium>
+    <cesium />
     <transition name="fade">
-      <landing3D v-show="this.isShow3DScene"></landing3D> 
+      <landing3D v-show="isShow3DScene" /> 
     </transition>
 
-
-    <leftMenu></leftMenu>
-    <rightMenu></rightMenu>
-
-
+    <leftMenu />
+    <rightMenu />
 
     <transition name="fade">
-      <landing class="slowFade" v-show="this.isShowLanding"></landing>
+      <landing
+        v-show="isShowLanding"
+        class="slowFade"
+      />
     </transition>
 
     <transition name="fade">
-      <characterSelect v-show="this.isShowCharacterSelect"></characterSelect>
+      <characterSelect v-show="isShowCharacterSelect" />
     </transition>
 
     <transition name="fade">
-      <searchSelection v-show="this.isShowLocationSelection"></searchSelection>
+      <searchSelection v-show="isShowLocationSelection" />
     </transition>
 
     <transition name="fade">
-      <cesiumDataLoading v-show="this.isShowCesiumDataLoading"></cesiumDataLoading>
+      <cesiumDataLoading v-show="isShowCesiumDataLoading" />
     </transition>
-<!--     <landing></landing> -->
+    <!--     <landing></landing> -->
 
 
-    <mobileRotate></mobileRotate>
-
-
+    <mobileRotate />
   </div>
 </template>
 
 <script>
-  import i18n from '@/language';
-  import { store } from '../store'
+import { store } from '../store'
 
-  import mobileRotate from '@/components/mobileRotate'
-  import landing from '@/components/landing'
-  import landing3D from '@/components/landing3D'
-  import cesium from '@/components/cesium'
-  import leftMenu from '@/components/leftMenu'
-  import rightMenu from '@/components/rightMenu'
-  import characterSelect from '@/components/characterSelect'
-  import searchSelection from '@/components/searchSelection'
-  import cesiumDataLoading from '@/components/cesiumDataLoading'
+import mobileRotate from '@/components/mobileRotate'
+import landing from '@/components/landing'
+import landing3D from '@/components/landing3D'
+import cesium from '@/components/cesium'
+import leftMenu from '@/components/leftMenu'
+import rightMenu from '@/components/rightMenu'
+import characterSelect from '@/components/characterSelect'
+import searchSelection from '@/components/searchSelection'
+import cesiumDataLoading from '@/components/cesiumDataLoading'
 
   
 
-  export default {
-    name: 'hkatg',
-    components: {
-      mobileRotate,
-      landing,
-      landing3D,
-      cesium,
-      leftMenu,
-      rightMenu,
-      characterSelect,
-      searchSelection,
-      cesiumDataLoading
+export default {
+  name:"hkatg-page",
+  components: {
+    mobileRotate,
+    landing,
+    landing3D,
+    cesium,
+    leftMenu,
+    rightMenu,
+    characterSelect,
+    searchSelection,
+    cesiumDataLoading
+  },
+  data () {
+    return {
+      isShowLanding : true,
+      isShow3DScene : true,
+      isShowCharacterSelect : false,
+      isShowLocationSelection : false,
+      isShowCesiumDataLoading : false,
+
+
+
+    }
+  },
+  computed:{
+    checkIsShowLanding(){return store.state.isShowLanding},
+    checkIsShow3DScene(){return store.state.isShow3DScene},
+    checkIsShowCharacterSelect(){return store.state.isShowCharacterSelect},
+    checkIsShowLocationSelection(){return store.state.isShowLocationSelection},
+    checkIsShowCesiumDataLoading(){return store.state.isShowCesiumDataLoading},
+    //checkProcessingStage(){return store.state.processingStage;},
+  },
+  watch:{
+    checkIsShowLanding(flag){
+      this.isShowLanding = flag
     },
-    data () {
-      return {
-        isShowLanding : true,
-        isShow3DScene : true,
-        isShowCharacterSelect : false,
-        isShowLocationSelection : false,
-        isShowCesiumDataLoading : false,
-
-
-
-      }
+    checkIsShow3DScene(flag){
+      this.isShow3DScene = flag
     },
-    created(){
-
+    checkIsShowCharacterSelect(flag){
+      this.isShowCharacterSelect = flag
     },
-
-    methods:{
-
-    },
-
-    computed:{
-      checkIsShowLanding(){return store.state.isShowLanding},
-      checkIsShow3DScene(){return store.state.isShow3DScene},
-      checkIsShowCharacterSelect(){return store.state.isShowCharacterSelect},
-      checkIsShowLocationSelection(){return store.state.isShowLocationSelection},
-      checkIsShowCesiumDataLoading(){return store.state.isShowCesiumDataLoading},
-      //checkProcessingStage(){return store.state.processingStage;},
-    },
-    watch:{
-      checkIsShowLanding(flag){
-        this.isShowLanding = flag;
-      },
-      checkIsShow3DScene(flag){
-        this.isShow3DScene = flag;
-      },
-      checkIsShowCharacterSelect(flag){
-        this.isShowCharacterSelect = flag;
-      },
-      checkIsShowLocationSelection(flag){this.isShowLocationSelection = flag},
-      checkIsShowCesiumDataLoading(flag){this.isShowCesiumDataLoading = flag},
-      //checkProcessingStage(stage){console.log("stage : " + stage);},
-    },
+    checkIsShowLocationSelection(flag){this.isShowLocationSelection = flag},
+    checkIsShowCesiumDataLoading(flag){this.isShowCesiumDataLoading = flag},
+    //checkProcessingStage(stage){console.log("stage : " + stage);},
+  },
 
 
-  }
+}
 </script>
 <style scoped>
-/*.fadeSlow-enter-active, .fadeSlow-leave-active {
-  transition: opacity 1s;
-}*/
-/*.fade-enter, .fade-leave-to  .fade-leave-active below version 2.1.8  {
-  transition: opacity 2s;
-}*/
-
 .slowFade{
   transition: opacity 2s;
 }
@@ -143,7 +117,3 @@
 
 
 </style>
-
-
-// WEBPACK FOOTER //
-// src/pages/hkatg.vue

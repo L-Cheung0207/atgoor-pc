@@ -1,104 +1,211 @@
 <template>
   <div>
-    
-    <div id="rightMenuArea" class="rightMenuArea">
+    <div
+      id="rightMenuArea"
+      class="rightMenuArea"
+    >
       <div class="rightMenuSelection">
-        <div class="rightMenuSelectionImageArea touch" @mouseup="this.openCloseLanguageMenu">
-          <img class="rightMenuSelectionImage" :src="rightMenuButton1Image">
+        <div
+          class="rightMenuSelectionImageArea touch"
+          @mouseup="openCloseLanguageMenu"
+        >
+          <img
+            class="rightMenuSelectionImage"
+            :src="rightMenuButton1Image"
+          >
         </div>
         <transition name="fade">
-          <div class="rightMenuSelectionLanguageMenuArea" v-show="this.isShowLanguageMenu">
-            <div class="rightMenuSelectionLanguageMenuSelectionAreaSpace"></div>
-            <div class="rightMenuSelectionLanguageMenuSelectionArea touch" @mouseup="switchLang('EN')">
-              <div id="rightMenuSelectionLanguageMenuSelectionTextEN" class="rightMenuSelectionLanguageMenuSelectionText">ENG</div>
+          <div
+            v-show="isShowLanguageMenu"
+            class="rightMenuSelectionLanguageMenuArea"
+          >
+            <div class="rightMenuSelectionLanguageMenuSelectionAreaSpace" />
+            <div
+              class="rightMenuSelectionLanguageMenuSelectionArea touch"
+              @mouseup="switchLang('EN')"
+            >
+              <div
+                id="rightMenuSelectionLanguageMenuSelectionTextEN"
+                class="rightMenuSelectionLanguageMenuSelectionText"
+              >
+                ENG
+              </div>
             </div>
-            <div class="rightMenuSelectionLanguageMenuSelectionArea touch" @mouseup="switchLang('TC')">
-              <div id="rightMenuSelectionLanguageMenuSelectionTextTC" class="rightMenuSelectionLanguageMenuSelectionText">繁體</div>
+            <div
+              class="rightMenuSelectionLanguageMenuSelectionArea touch"
+              @mouseup="switchLang('TC')"
+            >
+              <div
+                id="rightMenuSelectionLanguageMenuSelectionTextTC"
+                class="rightMenuSelectionLanguageMenuSelectionText"
+              >
+                繁體
+              </div>
             </div>
-            <div class="rightMenuSelectionLanguageMenuSelectionArea touch" @mouseup="switchLang('SC')">
-              <div id="rightMenuSelectionLanguageMenuSelectionTextSC" class="rightMenuSelectionLanguageMenuSelectionText">简体</div>
+            <div
+              class="rightMenuSelectionLanguageMenuSelectionArea touch"
+              @mouseup="switchLang('SC')"
+            >
+              <div
+                id="rightMenuSelectionLanguageMenuSelectionTextSC"
+                class="rightMenuSelectionLanguageMenuSelectionText"
+              >
+                简体
+              </div>
             </div>
-            <div class="rightMenuSelectionLanguageMenuSelectionAreaSpace"></div>
+            <div class="rightMenuSelectionLanguageMenuSelectionAreaSpace" />
           </div>
         </transition>
       </div>
 
       <div class="rightMenuSelection">
-        <div class="rightMenuSelectionImageArea touch" @mouseup="this.openCloseCubeMenu">
-          <img class="rightMenuSelectionImage" :src="rightMenuButton2Image">
+        <div
+          class="rightMenuSelectionImageArea touch"
+          @mouseup="openCloseCubeMenu"
+        >
+          <img
+            class="rightMenuSelectionImage"
+            :src="rightMenuButton2Image"
+          >
         </div>
         <transition name="fade">
-          <div class="rightMenuSelectionCubeMenuArea" v-show="this.isShowCubeMenu">
+          <div
+            v-show="isShowCubeMenu"
+            class="rightMenuSelectionCubeMenuArea"
+          >
             <div class="rightMenuSelectionCubeTitleArea">
-              <div class="rightMenuSelectionCubeTitle" v-html="$t('dataCube')">
-              </div>
+              <div
+                class="rightMenuSelectionCubeTitle"
+                v-html="$t('dataCube')"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button1']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button1']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button2']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button2']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button3']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button3']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button4']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button4']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button5']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button5']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button6']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button6']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button7']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button7']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button8']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button8']"
+              />
             </div>
             <div class="rightMenuSelectionCubeSubButton">
-              <div :lang="this.language" class="rightMenuSelectionCubeSubButtonText" v-html="$t('rightMenuCubeButton')['button9']"></div>
+              <div
+                :lang="language"
+                class="rightMenuSelectionCubeSubButtonText"
+                v-html="$t('rightMenuCubeButton')['button9']"
+              />
             </div>
 
             <div class="rightMenuSelectionCubeComingSoon">
-              <div class="rightMenuSelectionCubeComingSoonText" v-html="$t('comingSoon')"></div>
+              <div
+                class="rightMenuSelectionCubeComingSoonText"
+                v-html="$t('comingSoon')"
+              />
             </div>
           </div>
         </transition>
       </div>
       <div class="rightMenuSelection">
-        <div class="rightMenuSelectionImageArea touch" @mouseup="this.openCloseGridMenu">
-          <img class="rightMenuSelectionImage" :src="rightMenuButton3Image">
+        <div
+          class="rightMenuSelectionImageArea touch"
+          @mouseup="openCloseGridMenu"
+        >
+          <img
+            class="rightMenuSelectionImage"
+            :src="rightMenuButton3Image"
+          >
         </div>
 
         <transition name="fade">
-          <div class="rightMenuSelectionSubMenuArea" v-show="this.isShowGridMenu">
+          <div
+            v-show="isShowGridMenu"
+            class="rightMenuSelectionSubMenuArea"
+          >
             <div class="rightMenuSelectionSubMenuButtonArea">
-              <div id="rightMenuGridButtonOn" class="rightMenuSelectionSubMenuButton touch" @mouseup="gridSetting(true)">
-                <div class="rightMenuSelectionSubMenuButtonText" v-html="$t('switchOn')"></div>
+              <div
+                id="rightMenuGridButtonOn"
+                class="rightMenuSelectionSubMenuButton touch"
+                @mouseup="gridSetting(true)"
+              >
+                <div
+                  class="rightMenuSelectionSubMenuButtonText"
+                  v-html="$t('switchOn')"
+                />
               </div>
             </div>
             <div class="rightMenuSelectionSubMenuButtonArea">
-              <div id="rightMenuGridButtonOff" class="rightMenuSelectionSubMenuButton touch" @mouseup="gridSetting(false)">
-                <div class="rightMenuSelectionSubMenuButtonText" v-html="$t('switchOff')"></div>
+              <div
+                id="rightMenuGridButtonOff"
+                class="rightMenuSelectionSubMenuButton touch"
+                @mouseup="gridSetting(false)"
+              >
+                <div
+                  class="rightMenuSelectionSubMenuButtonText"
+                  v-html="$t('switchOff')"
+                />
               </div>
             </div>
           </div>
         </transition>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '../store'
 
 export default {
-  name: 'rightMenu',
+  name: 'RightMenu',
   data () {
     return {
       language : i18n.locale,
@@ -116,23 +223,41 @@ export default {
 
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+    // checkIsShowLanding(){return store.state.isShowLanding},
+    checkRightMenuSlideInOutEvent(){return store.state.rightMenuSlideInOutEvent},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+    checkRightMenuSlideInOutEvent(flag){
+      console.log('!!!!!!!!!!! ' + flag)
+      this.rightMenuSlideInOut(flag)
+    },
+    // checkIsShowLanding(flag){
+    //   if(!flag){
+    //     this.rightMenuSlideIn();
+    //   }
+    // },
+  },
   created(){
-    this.languageSetting();
+    this.languageSetting()
   },
   methods:{
 
     rightMenuSlideInOut(inout){
-      let self = this;
-      if(document.getElementById("rightMenuArea") == null) {
-        setTimeout(function(){ self.rightMenuSlideIn() }, 100);
+      let self = this
+      if(document.getElementById('rightMenuArea') == null) {
+        setTimeout(function(){ self.rightMenuSlideIn() }, 100)
       } else {
-        if(inout == "in"){
-          document.getElementById("rightMenuArea").classList.add('rightMenuSlideIn');
-          document.getElementById("rightMenuArea").classList.remove('rightMenuSlideOut');
+        if(inout == 'in'){
+          document.getElementById('rightMenuArea').classList.add('rightMenuSlideIn')
+          document.getElementById('rightMenuArea').classList.remove('rightMenuSlideOut')
         }
-        else if(inout == "out"){
-          document.getElementById("rightMenuArea").classList.remove('rightMenuSlideIn');
-          document.getElementById("rightMenuArea").classList.add('rightMenuSlideOut');
+        else if(inout == 'out'){
+          document.getElementById('rightMenuArea').classList.remove('rightMenuSlideIn')
+          document.getElementById('rightMenuArea').classList.add('rightMenuSlideOut')
         }
         
       }
@@ -140,123 +265,105 @@ export default {
 
 
     openCloseLanguageMenu(){
-      this.isShowLanguageMenu = !this.isShowLanguageMenu;
-      this.isShowGridMenu = false;
-      this.isShowCubeMenu = false;
+      this.isShowLanguageMenu = !this.isShowLanguageMenu
+      this.isShowGridMenu = false
+      this.isShowCubeMenu = false
     },
 
 
     openCloseCubeMenu(){
-      this.isShowCubeMenu = !this.isShowCubeMenu;
-      this.isShowGridMenu = false;
-      this.isShowLanguageMenu = false;
+      this.isShowCubeMenu = !this.isShowCubeMenu
+      this.isShowGridMenu = false
+      this.isShowLanguageMenu = false
     },
 
 
 
     openCloseGridMenu(){
-      this.isShowGridMenu = !this.isShowGridMenu;
-      this.isShowLanguageMenu = false;
-      this.isShowCubeMenu = false;
+      this.isShowGridMenu = !this.isShowGridMenu
+      this.isShowLanguageMenu = false
+      this.isShowCubeMenu = false
     },
 
 
     gridSetting(switchOn){
       if(this.isShowGridMenu){
         if(switchOn){
-          document.getElementById("rightMenuGridButtonOn").style.backgroundColor = "rgba(255,255,255,0.5)";
-          document.getElementById("rightMenuGridButtonOff").style.backgroundColor = "rgba(255,255,255,0.2)";
-          store.state.isEnableGridFunction = true;
-          this.isShowGridMenu = false;
+          document.getElementById('rightMenuGridButtonOn').style.backgroundColor = 'rgba(255,255,255,0.5)'
+          document.getElementById('rightMenuGridButtonOff').style.backgroundColor = 'rgba(255,255,255,0.2)'
+          store.state.isEnableGridFunction = true
+          this.isShowGridMenu = false
         }
         else{
-          document.getElementById("rightMenuGridButtonOn").style.backgroundColor = "rgba(255,255,255,0.2)";
-          document.getElementById("rightMenuGridButtonOff").style.backgroundColor = "rgba(255,255,255,0.5)";
-          store.state.isEnableGridFunction = false;
-          this.isShowGridMenu = false;
+          document.getElementById('rightMenuGridButtonOn').style.backgroundColor = 'rgba(255,255,255,0.2)'
+          document.getElementById('rightMenuGridButtonOff').style.backgroundColor = 'rgba(255,255,255,0.5)'
+          store.state.isEnableGridFunction = false
+          this.isShowGridMenu = false
         }
       }
     },
 
 
     languageSetting(){
-      let self = this;
-      if(document.getElementById("rightMenuSelectionLanguageMenuSelectionTextEN") == null || document.getElementById("rightMenuSelectionLanguageMenuSelectionTextTC") == null || document.getElementById("rightMenuSelectionLanguageMenuSelectionTextSC") == null ) {
-        setTimeout(function(){ self.languageSetting() }, 100);
-        console.log("waiting");
+      let self = this
+      if(document.getElementById('rightMenuSelectionLanguageMenuSelectionTextEN') == null || document.getElementById('rightMenuSelectionLanguageMenuSelectionTextTC') == null || document.getElementById('rightMenuSelectionLanguageMenuSelectionTextSC') == null ) {
+        setTimeout(function(){ self.languageSetting() }, 100)
+        console.log('waiting')
       } else {
-        console.log("!!!!!!!!!! " + self.language);
-        if(self.language == "EN"){
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextEN').style.color = "rgba(255,255,255,1)";
+        console.log('!!!!!!!!!! ' + self.language)
+        if(self.language == 'EN'){
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextEN').style.color = 'rgba(255,255,255,1)'
         }
         else{
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextEN').style.color = "rgba(255,255,255,0.5)";
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextEN').style.color = 'rgba(255,255,255,0.5)'
         }
 
-        if(self.language == "TC"){
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextTC').style.color = "rgba(255,255,255,1)";
+        if(self.language == 'TC'){
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextTC').style.color = 'rgba(255,255,255,1)'
         }
         else{
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextTC').style.color = "rgba(255,255,255,0.5)";
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextTC').style.color = 'rgba(255,255,255,0.5)'
         }
 
-        if(self.language == "SC"){
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextSC').style.color = "rgba(255,255,255,1)";
+        if(self.language == 'SC'){
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextSC').style.color = 'rgba(255,255,255,1)'
         }
         else{
-          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextSC').style.color = "rgba(255,255,255,0.5)";
+          document.getElementById('rightMenuSelectionLanguageMenuSelectionTextSC').style.color = 'rgba(255,255,255,0.5)'
         }
       }
     },
 
 
-  //   switchLang(){
-  //     console.log("!!!!!!!!!! " + this.language);
-  //     let lang = this.language;
-  //     if(this.language == "SC"){
-  //       lang = "EN";
-  //     }
-  //     else if(this.language == "EN"){
-  //       lang = "TC";
-  //     }
-  //     else if(this.language == "TC"){
-  //       lang = "SC";
-  //     }
+    //   switchLang(){
+    //     console.log("!!!!!!!!!! " + this.language);
+    //     let lang = this.language;
+    //     if(this.language == "SC"){
+    //       lang = "EN";
+    //     }
+    //     else if(this.language == "EN"){
+    //       lang = "TC";
+    //     }
+    //     else if(this.language == "TC"){
+    //       lang = "SC";
+    //     }
 
-  //     i18n.locale = lang;
-  //     localStorage.setItem('locale', lang);
-  //     console.log("change language : " + lang);
-  //   },
-  // },
+    //     i18n.locale = lang;
+    //     localStorage.setItem('locale', lang);
+    //     console.log("change language : " + lang);
+    //   },
+    // },
 
     switchLang(lang){
       if(this.isShowLanguageMenu){
-        this.language = lang;
-        i18n.locale = lang;
-        localStorage.setItem('locale', lang);
-        console.log("change language : " + lang);
-        this.languageSetting();
-        this.isShowLanguageMenu = false;
+        this.language = lang
+        i18n.locale = lang
+        localStorage.setItem('locale', lang)
+        console.log('change language : ' + lang)
+        this.languageSetting()
+        this.isShowLanguageMenu = false
       }
     },
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-    // checkIsShowLanding(){return store.state.isShowLanding},
-    checkRightMenuSlideInOutEvent(){return store.state.rightMenuSlideInOutEvent},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
-    checkRightMenuSlideInOutEvent(flag){
-      console.log("!!!!!!!!!!! " + flag);
-      this.rightMenuSlideInOut(flag);
-    },
-    // checkIsShowLanding(flag){
-    //   if(!flag){
-    //     this.rightMenuSlideIn();
-    //   }
-    // },
   },
 }
 </script>

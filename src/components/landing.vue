@@ -1,8 +1,14 @@
 <template>
   <div>
-    <div id="landingArea" class="landingArea touch">
-      <div class="background" :style="{ backgroundImage: `url('${backgroundImage}')` }"></div>
-    <!-- <div class="background"></div> -->
+    <div
+      id="landingArea"
+      class="landingArea touch"
+    >
+      <div
+        class="background"
+        :style="{ backgroundImage: `url('${backgroundImage}')` }"
+      />
+      <!-- <div class="background"></div> -->
 
 
       <!-- <div id="loopingAnimation0" class="loopingAnimationArea">
@@ -19,7 +25,7 @@
       </div> -->
 
 
-<!--       <transition name="fade">
+      <!--       <transition name="fade">
         <div id="loopingAnimation" class="loopingAnimationArea" v-show="isShowLoopingAnimation">
           <img id="loopingAnimationImage" class="loopingAnimationImage" :src="loopingAnimation2">
         </div>
@@ -34,19 +40,33 @@
       </transition> -->
 
 
-      <div id="loopingAnimation" class="loopingAnimationArea ">
-        <img id="loopingAnimationImage" class="loopingAnimationImage" :src="landingLoadingImage">
+      <div
+        id="loopingAnimation"
+        class="loopingAnimationArea "
+      >
+        <img
+          id="loopingAnimationImage"
+          class="loopingAnimationImage"
+          :src="landingLoadingImage"
+        >
       </div>
 
 
       <transition name="fade">
-        <div class="titleArea" v-show="isShowLandingLogo">
-          <img id="landingLogo" class="landingLogo" :src="landingLogo">
+        <div
+          v-show="isShowLandingLogo"
+          class="titleArea"
+        >
+          <img
+            id="landingLogo"
+            class="landingLogo"
+            :src="landingLogo"
+          >
         </div>
       </transition>
 
 
-     <!--  <div class="logoArea">
+      <!--  <div class="logoArea">
       </div>
 
 
@@ -73,11 +93,11 @@
 
 <script>
 
-import i18n from '@/language';
+import i18n from '@/language'
 import { store } from '../store'
 
 export default {
-  name: 'langding',
+  name: 'langding-page',
   data () {
     return {
       language : i18n.locale,
@@ -101,21 +121,28 @@ export default {
       isShowTitle : false,
     }
   },
+
+  computed:{
+    checkCurrentLanguage(){return i18n.locale},
+  },
+  watch:{
+    checkCurrentLanguage(lang){this.language = lang},
+  },
   created(){
-    this.initAnimation();
+    this.initAnimation()
   },
   methods:{
     initAnimation(){
-      let self = this;
+      // let self = this;
 
-      this.addLandingLogoAnimation();
-      this.addLandingLoopAnimation();
-
-
+      this.addLandingLogoAnimation()
+      this.addLandingLoopAnimation()
 
 
 
-      this.fadeOutLanding();
+
+
+      this.fadeOutLanding()
 
     },
 
@@ -123,49 +150,41 @@ export default {
 
 
     addLandingLogoAnimation(){
-      let self = this;
+      let self = this
       // if(document.getElementById("landingLogo") == null) {
       //   setTimeout(function(){ self.addLandingLogoAnimation()}, 100);
       // } else {
       //   // document.getElementById("landingLogo").classList.add('landingLogoAnimation');
       // }
       setTimeout(function(){ 
-        self.isShowLandingLogo = true;
-      }, 1000);
+        self.isShowLandingLogo = true
+      }, 1000)
       setTimeout(function(){ 
-        self.isShowLandingLogo = false;
-      }, 3500);
+        self.isShowLandingLogo = false
+      }, 3500)
       
     },
 
     addLandingLoopAnimation(){
-      let self = this;
-      if(document.getElementById("loopingAnimationImage") == null) {
-        setTimeout(function(){ self.addLandingLoopAnimation()}, 100);
+      let self = this
+      if(document.getElementById('loopingAnimationImage') == null) {
+        setTimeout(function(){ self.addLandingLoopAnimation()}, 100)
       } else {
-        document.getElementById("loopingAnimationImage").classList.add('loopingAnimationScaleOpacity');
+        document.getElementById('loopingAnimationImage').classList.add('loopingAnimationScaleOpacity')
       }
     },
 
 
     fadeOutLanding(){
-      let self = this;
       setTimeout(function(){ 
-        store.state.isShowLanding = false;
-        store.state.leftMenuSlideInOutEvent = "in";
-        store.state.rightMenuSlideInOutEvent = "in";
-        document.getElementById('landingArea').classList.remove('touch');
+        store.state.isShowLanding = false
+        store.state.leftMenuSlideInOutEvent = 'in'
+        store.state.rightMenuSlideInOutEvent = 'in'
+        document.getElementById('landingArea').classList.remove('touch')
 
-      }, 3500);
+      }, 3500)
     }
 
-  },
-
-  computed:{
-    checkCurrentLanguage(){return i18n.locale;},
-  },
-  watch:{
-    checkCurrentLanguage(lang){this.language = lang;},
   },
 }
 </script>
