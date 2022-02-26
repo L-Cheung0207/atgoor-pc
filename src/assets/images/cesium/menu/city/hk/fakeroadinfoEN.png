@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/fakeroadinfoEN.746fdee.png";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/images/cesium/menu/city/hk/fakeroadinfoEN.png
+// module id = VRvu
+// module chunks = 0

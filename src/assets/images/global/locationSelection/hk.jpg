@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/hk.d6a2184.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/images/global/locationSelection/hk.jpg
+// module id = v2AH
+// module chunks = 0

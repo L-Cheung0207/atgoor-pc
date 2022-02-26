@@ -1,0 +1,8 @@
+module.exports = __webpack_public_path__ + "static/img/saudi.24692cb.jpg";
+
+
+//////////////////
+// WEBPACK FOOTER
+// ./src/assets/images/global/locationSelection/saudi.jpg
+// module id = g3lh
+// module chunks = 0

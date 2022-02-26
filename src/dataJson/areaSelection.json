@@ -1,8 +1,39 @@
-module.exports = [{"id":"suzhou","countryId":"china","name":{"TC":"蘇州","SC":"苏州","EN":"Suzhou"},"latitude":31.2837196,"longitude":120.7377479,"height":5000,"cesiumData":{"baseMap":712032,"cityBuilding":712029,"cityRoad":712030}},{"id":"shenzhen","countryId":"china","name":{"TC":"深圳","SC":"深圳","EN":"Shenzhen"}},{"id":"guangzhou","countryId":"china","name":{"TC":"廣州","SC":"广州","EN":"Guangzhou"}},{"id":"zhuhai","countryId":"china","name":{"TC":"珠海","SC":"珠海","EN":"Zhuhai"}},{"id":"hongkong","countryId":"china","name":{"TC":"香港","SC":"香港","EN":"Hong Kong"},"latitude":22.3101859,"longitude":114.1771163,"height":5000,"cesiumData":{"cityBuilding":711457,"cityRoad":711458}}]
-
-
-//////////////////
-// WEBPACK FOOTER
-// ./src/dataJson/areaSelection.json
-// module id = yWub
-// module chunks = 0
+[
+  {
+    "id": "suzhou",
+    "countryId": "china",
+    "name": { "TC": "蘇州", "SC": "苏州", "EN": "Suzhou" },
+    "latitude": 31.2837196,
+    "longitude": 120.7377479,
+    "height": 5000,
+    "cesiumData": {
+      "baseMap": 712032,
+      "cityBuilding": 712029,
+      "cityRoad": 712030
+    }
+  },
+  {
+    "id": "shenzhen",
+    "countryId": "china",
+    "name": { "TC": "深圳", "SC": "深圳", "EN": "Shenzhen" }
+  },
+  {
+    "id": "guangzhou",
+    "countryId": "china",
+    "name": { "TC": "廣州", "SC": "广州", "EN": "Guangzhou" }
+  },
+  {
+    "id": "zhuhai",
+    "countryId": "china",
+    "name": { "TC": "珠海", "SC": "珠海", "EN": "Zhuhai" }
+  },
+  {
+    "id": "hongkong",
+    "countryId": "china",
+    "name": { "TC": "香港", "SC": "香港", "EN": "Hong Kong" },
+    "latitude": 22.3101859,
+    "longitude": 114.1771163,
+    "height": 5000,
+    "cesiumData": { "cityBuilding": 711457, "cityRoad": 711458 }
+  }
+]
