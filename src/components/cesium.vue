@@ -412,10 +412,26 @@ export default {
         this.addedCesiumVectorTileScript &&
         this.addedCesiumScript
       ) {
+        let tiandituTk = "e1de13f34045c005fa2a8ac464cff3e5";
+        let subdomains = ["0", "1", "2", "3", "4", "5", "6", "7"];
         this.$Cesium.Ion.defaultAccessToken =
           this.cesiumJsonData["accessToken"];
         self.viewer = new this.$Cesium.Viewer("cesiumContainer", {
-          terrainProvider: this.$Cesium.createWorldTerrain(),
+          imageryProvider: new this.$Cesium.WebMapTileServiceImageryProvider({
+            url:
+              "http://t{s}.tianditu.com/img_w/wmts?service=wmts&request=GetTile&version=1.0.0&LAYER=img&tileMatrixSet=w&TileMatrix={TileMatrix}&TileRow={TileRow}&TileCol={TileCol}&style=default&format=tiles&tk=" +
+              tiandituTk,
+            subdomains,
+            layer: "tdtImgLayer",
+            style: "default",
+            format: "image/jpeg",
+            tileMatrixSetID: "GoogleMapsCompatible", //使用谷歌的瓦片切片方式
+          }),
+          terrainProvider: new this.$Cesium.CesiumTerrainProvider({
+            url: "https://www.supermapol.com/realspace/services/3D-stk_terrain/rest/realspace/datas/info/data/path",
+            requestWaterMask: true, //开启法向量
+            requestVertexNormals: true, //开启水面特效
+          }),
           shouldAnimate: true,
           orderIndependentTranslucency: false,
           contextOptions: {
