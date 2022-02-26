@@ -12,7 +12,7 @@ const cesiumWorkers = "../Build/Cesium/Workers";
 const port = 8080;
 
 module.exports = {
-  publicPath: "/",
+  publicPath: "./",
   outputDir: "dist",
   lintOnSave: true,
   chainWebpack: (config) => {
