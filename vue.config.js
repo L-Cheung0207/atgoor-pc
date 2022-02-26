@@ -69,13 +69,13 @@ module.exports = {
       new webpack.DefinePlugin({
         CESIUM_BASE_URL: JSON.stringify("./"),
       }),
-      new CompressionPlugin({
-        filename: "[path].gz[query]",
-        algorithm: "gzip",
-        test: productionGzipExtensions,
-        threshold: 8192,
-        minRatio: 0.8,
-      }),
+      // new CompressionPlugin({
+      //   filename: "[path].gz[query]",
+      //   algorithm: "gzip",
+      //   test: productionGzipExtensions,
+      //   threshold: 8192,
+      //   minRatio: 0.8,
+      // }),
     ],
     module: {
       unknownContextCritical: /^.\/.*$/,
